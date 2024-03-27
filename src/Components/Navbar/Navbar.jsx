@@ -1,7 +1,21 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Navbar = () => {
+    const navigate = useNavigate();
+    const { user, logoutUser } = useContext(AuthContext);
+    const handleLogout = () => {
+        logoutUser()
+            .then(() => {
+                navigate("/login");
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
     const navLink = (
         <>
             <li>
@@ -59,9 +73,15 @@ const Navbar = () => {
                     <div className=" hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">{navLink}</ul>
                     </div>{" "}
-                    <Link to={"/login"} className="btn">
-                        Login
-                    </Link>
+                    {user ? (
+                        <button onClick={handleLogout} className="btn">
+                            Logout
+                        </button>
+                    ) : (
+                        <Link to={"/login"} className="btn">
+                            Login
+                        </Link>
+                    )}
                 </div>
             </div>
         </div>
