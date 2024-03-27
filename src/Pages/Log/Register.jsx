@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const Login = () => {
+const Register = () => {
     return (
         <div>
             <div className="hero min-h-{93vh} ">
                 <div className="hero-content grid">
                     <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Login now!</h1>
+                        <h1 className="text-5xl font-bold">Register!</h1>
                     </div>
                     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form className="card-body">
@@ -32,14 +32,6 @@ const Login = () => {
                                     className="input input-bordered"
                                     required
                                 />
-                                <label className="label">
-                                    <a
-                                        href="#"
-                                        className="label-text-alt link link-hover"
-                                    >
-                                        Forgot password?
-                                    </a>
-                                </label>
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">
@@ -47,9 +39,9 @@ const Login = () => {
                                 </button>
                             </div>
                             <div className="flex">
-                                <p>Don't have account</p>
-                                <Link className="btn-link" to={"/register"}>
-                                    register
+                                <p>Already have account</p>
+                                <Link className="btn-link" to={"/login"}>
+                                    login
                                 </Link>
                             </div>
                             <div className="grid items-center gap-4 mt-4">
@@ -69,4 +61,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
